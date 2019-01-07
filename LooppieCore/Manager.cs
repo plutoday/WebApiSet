@@ -7,7 +7,7 @@ namespace LooppieCore
 {
     public class Manager
     {
-        IStorage storage = new InMemoryStorage();
+        IStorage storage = new SQLStorage();
         private Manager()
         {
             

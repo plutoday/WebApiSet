@@ -33,12 +33,19 @@ namespace LooppieCore
 
         public List<Question> GetAllQuestions()
         {
-            var list = new List<Question>();
-            foreach(var q in _dbContext.Question.Include(q=>q.Answers).ToList())
+            try
             {
-                list.Add(q.ToQuestion());
+                var list = new List<Question>();
+                foreach (var q in _dbContext.Question.Include(q => q.Answers).ToList())
+                {
+                    list.Add(q.ToQuestion());
+                }
+                return list;
             }
-            return list;
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public QuestionStat GetQuestionStat(Guid questionId)
