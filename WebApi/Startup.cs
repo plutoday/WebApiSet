@@ -42,7 +42,8 @@ namespace WebApi
 
             app.UseHttpsRedirection();
 
-            app.UseMvc();
+            app.UseMvc();            
+
             /*
             app.UseMvcWithDefaultRoute();
             app.UseMvc(routes =>

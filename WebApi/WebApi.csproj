@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Contrat\Contrat.csproj" />
+    <ProjectReference Include="..\LooppieCore\LooppieCore.csproj" />
   </ItemGroup>
 
 </Project>
