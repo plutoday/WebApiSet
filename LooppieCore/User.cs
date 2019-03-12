@@ -14,17 +14,20 @@ namespace LooppieCore
         //public List<Tag> Tags { get; set; }
         //public List<User> Friends { get; set; }
         public bool ActiveUser { get; set; }
+        public DateTime UserCreateTime { get; set; }
 
 
         public User()
         {
             UserId = Guid.NewGuid();
             ActiveUser = true;
-        }
+            UserCreateTime = DateTime.Now;
+    }
         public User(Guid userId)
         {
             UserId = userId;
             ActiveUser = true;
+            UserCreateTime = DateTime.Now;
         }
     }
 }

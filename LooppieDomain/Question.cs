@@ -13,7 +13,7 @@ namespace LooppieCore.Domain
             // public List<int> Tags { get; set; }
             public List<Answer> Answers { get; set; }
             public int HotRank { get; set; }
-            public DateTime QuestionCreatTime { get; set; }
+            public DateTime QuestionCreateTime { get; set; }
         public Question(Guid submitterId, string description, List<Answer> answers)
         {
             SubmitterId = submitterId;
@@ -22,6 +22,7 @@ namespace LooppieCore.Domain
             QuestionId = Guid.NewGuid();
             //Tags = new List<int>();
             //Tags.Add(new Tag(TagEnum.People));
+            QuestionCreateTime = DateTime.Now;
         }
 
         public Question()

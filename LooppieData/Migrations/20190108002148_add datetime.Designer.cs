@@ -4,14 +4,16 @@ using LooppieCore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LooppieData.Migrations
 {
     [DbContext(typeof(LooppieContext))]
-    partial class LooppieContextModelSnapshot : ModelSnapshot
+    [Migration("20190108002148_add datetime")]
+    partial class adddatetime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,8 +67,6 @@ namespace LooppieData.Migrations
                 {
                     b.Property<Guid>("ID")
                         .ValueGeneratedOnAdd();
-
-                    b.Property<bool>("Anonymous");
 
                     b.Property<int>("Answer");
 

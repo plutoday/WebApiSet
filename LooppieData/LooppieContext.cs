@@ -13,7 +13,9 @@ namespace LooppieCore.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server = (localdb)\\mssqllocaldb; Database = LooppieData; Trusted_Connection = True;");
+            string azureConnectionString = "Server=tcp:looppiedbtest.database.windows.net,1433;Initial Catalog=lpdbtest;Persist Security Info=False;User ID=lpadmin;Password=Hxm523156!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            //string localConnectionString = "Server = (localdb)\\mssqllocaldb; Database = LooppieData; Trusted_Connection = True;";
+            optionsBuilder.UseSqlServer(azureConnectionString);
             base.OnConfiguring(optionsBuilder);
         }
     }

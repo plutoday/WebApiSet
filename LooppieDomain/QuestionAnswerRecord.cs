@@ -10,5 +10,8 @@ namespace LooppieCore.Domain
         public Guid AnswererId { get; set; }
         public Guid QuestionId { get; set; }
         public int Answer { get; set; }
+        public DateTime AnswerRecordCreateTime { get; set; }
+        public bool Anonymous { get; set; }
+
     }
 }

@@ -20,7 +20,7 @@ namespace LooppieCore
             StringBuilder builder = new StringBuilder();
             builder.Append(Question.Description);
             builder.Append(" ");
-            builder.Append("/n");
+            builder.Append("\n");
             int [] array = new int [Question.Answers.Count];
             foreach (QuestionAnswerRecord record in Records)
             {

@@ -46,17 +46,17 @@ namespace ConsoleClient
             Manager.SubmitQuestion(id, question);
         }
 
-        public void ShowQuestion()
+        public void ShowQuestion(int index)
         {
             var questions = Manager.GetQuestions();
-            Console.WriteLine(questions[0].ToString());
+            Console.WriteLine(questions[index].ToString());
         }
 
 
-        public void AnswerQuestion()
+        public void AnswerQuestion(int index)
         {
             var questions = Manager.GetQuestions();
-            Question q = questions[0];
+            Question q = questions[index];
             Console.WriteLine(q.ToString());
             Console.WriteLine("Please input your id");
             Guid uId = Guid.Parse(Console.ReadLine());

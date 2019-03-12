@@ -14,5 +14,6 @@ namespace LooppieCore.Domain
         //public List<Tag> Tags { get; set; }
         //public List<User> Friends { get; set; }
         public bool ActiveUser { get; set; }
+        public DateTime UserCreateTime { get; set; }
     }
 }

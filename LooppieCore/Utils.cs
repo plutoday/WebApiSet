@@ -17,7 +17,7 @@ namespace LooppieCore
                SubCategory = question.SubCategory.ToString(),
                Answers = question.Answers.Select(a => ToDomainAnswer(a)).ToList(),
                HotRank = question.HotRank,
-               QuestionCreatTime = question.QuestionCreatTime
+               QuestionCreateTime = question.QuestionCreateTime
 
            };
 
@@ -43,8 +43,9 @@ namespace LooppieCore
                 Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                ActiveUser = user.ActiveUser
-            };
+                ActiveUser = user.ActiveUser,
+                UserCreateTime = user.UserCreateTime
+    };
 
             return domainUser;
         }
@@ -55,7 +56,9 @@ namespace LooppieCore
                 ID = record.ID,
                 AnswererId = record.AnswererId,
                 QuestionId = record.QuestionId,
-                Answer = record.Answer
+                Answer = record.Answer,
+                AnswerRecordCreateTime = record.AnswerRecordCreateTime,
+                Anonymous = record.Anonymous
             };
             return domainQaRecord;
         }
@@ -71,7 +74,7 @@ namespace LooppieCore
                 SubCategory = (SubCategory)Enum.Parse(typeof(SubCategory), domainQuestion.SubCategory),
                 Answers = domainQuestion.Answers.Select(a => ToAnswer(a)).ToList(),
                 HotRank = domainQuestion.HotRank,
-                QuestionCreatTime = domainQuestion.QuestionCreatTime
+                QuestionCreateTime = domainQuestion.QuestionCreateTime
 
             };
 
@@ -99,7 +102,8 @@ namespace LooppieCore
                 Email = domainUser.Email,
                 FirstName = domainUser.FirstName,
                 LastName = domainUser.LastName,
-                ActiveUser = domainUser.ActiveUser
+                ActiveUser = domainUser.ActiveUser,
+                UserCreateTime = domainUser.UserCreateTime
             };
 
             return user;
@@ -112,7 +116,9 @@ namespace LooppieCore
                 ID = domainQaRecord.ID,
                 AnswererId = domainQaRecord.AnswererId,
                 QuestionId = domainQaRecord.QuestionId,
-                Answer = domainQaRecord.Answer
+                Answer = domainQaRecord.Answer,
+                AnswerRecordCreateTime = domainQaRecord.AnswerRecordCreateTime,
+                Anonymous = domainQaRecord.Anonymous
             };
             return qaRecord;
         }

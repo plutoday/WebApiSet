@@ -14,7 +14,7 @@ namespace LooppieCore
        // public List<int> Tags { get; set; }
         public List<Answer> Answers { get; set; }
         public int HotRank { get; set; }
-        public DateTime QuestionCreatTime { get; set; }
+        public DateTime QuestionCreateTime { get; set; }
 
 
 
@@ -26,12 +26,14 @@ namespace LooppieCore
             QuestionId = Guid.NewGuid();
             //Tags = new List<int>();
             //Tags.Add(new Tag(TagEnum.People));
+            QuestionCreateTime = DateTime.Now;
         }
 
         public Question()
         {
  
             Answers = new List<Answer>();
+            QuestionCreateTime = DateTime.Now;
 
         }
 
