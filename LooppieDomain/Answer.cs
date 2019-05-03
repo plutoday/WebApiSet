@@ -11,7 +11,6 @@ namespace LooppieCore.Domain
         //public List<Tag> Tags { get; set; }
         public int HitCount { get; set; }
         public string Explanation { get; set; }
-
-
+        public bool IsCorrect { get; set; }
     }
 }

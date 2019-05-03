@@ -18,7 +18,7 @@ namespace LooppieCore
         {
             QuestionId = question.QuestionId;
             QuestionDescription = question.Description;
-            AnswerList = question.Answers.Select(a => new AnswerOutput(a.Description)).ToList();
+            AnswerList = question.Answers.Select(a => new AnswerOutput(a.Description, a.IsCorrect)).ToList();
             Category = question.Category;
             SubCategory = question.SubCategory;
             Tags = new List<int>();

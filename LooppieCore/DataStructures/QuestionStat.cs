@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace LooppieCore
@@ -24,7 +25,11 @@ namespace LooppieCore
             int [] array = new int [Question.Answers.Count];
             foreach (QuestionAnswerRecord record in Records)
             {
-               array [record.Answer]++;
+                var indices = record.AnswerIndicesString.Split('-').Select(s => int.Parse(s)).ToList();
+                foreach (var index in indices)
+                {
+                    array[index]++;
+                }
             }
             foreach (var item in array)
             {

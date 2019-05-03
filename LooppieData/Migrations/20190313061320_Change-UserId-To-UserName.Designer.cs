@@ -4,14 +4,16 @@ using LooppieCore.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LooppieData.Migrations
 {
     [DbContext(typeof(LooppieContext))]
-    partial class LooppieContextModelSnapshot : ModelSnapshot
+    [Migration("20190313061320_Change-UserId-To-UserName")]
+    partial class ChangeUserIdToUserName
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -29,8 +31,6 @@ namespace LooppieData.Migrations
                     b.Property<string>("Explanation");
 
                     b.Property<int>("HitCount");
-
-                    b.Property<bool>("IsCorrect");
 
                     b.Property<Guid?>("QuestionId");
 

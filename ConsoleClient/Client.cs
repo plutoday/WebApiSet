@@ -21,11 +21,11 @@ namespace ConsoleClient
 
         public void SubmitQuestion()
         {
-            Console.WriteLine("Please input your id");
-            Guid id = Guid.Parse(Console.ReadLine());
+            Console.WriteLine("Please input your userName");
+            string userName = Console.ReadLine();
             Console.WriteLine("Please input your question");
             string description = Console.ReadLine();
-            QuestionInput question = new QuestionInput(description);
+            SubmitQuestionInput question = new SubmitQuestionInput(description);
             Console.WriteLine("Please input your answer, one answer per input, q to end");
             while (true)
             {
@@ -35,7 +35,14 @@ namespace ConsoleClient
                     break;
                 }
 
-                question.AnswerDescriptionList.Add(answer);
+                if (answer.EndsWith('+'))
+                {
+                    question.AnswerDescriptionList.Add(new Tuple<string, bool>(answer.Substring(0, answer.Length - 1), true));
+                }
+                else
+                {
+                    question.AnswerDescriptionList.Add(new Tuple<string, bool>(answer, false));
+                }
             }
             
             if (question.AnswerDescriptionList.Count == 0)
@@ -43,7 +50,7 @@ namespace ConsoleClient
                 throw new InvalidOperationException("No answer provided");
             }
 
-            Manager.SubmitQuestion(id, question);
+            Manager.SubmitQuestion(userName, question);
         }
 
         public void ShowQuestion(int index)
@@ -67,11 +74,9 @@ namespace ConsoleClient
             {
                 throw new InvalidOperationException("No answer provided");
             }
-            QuestionAnswerInput questionAnswerInput = new QuestionAnswerInput(q.QuestionId, uId, answer);
+            AnswerQuestionInput questionAnswerInput = new AnswerQuestionInput(q.QuestionId, uId.ToString(), new List<int>(answer));
             Manager.AnswerQuestion(questionAnswerInput);
             Console.WriteLine(Manager.GetQuestionStat(q.QuestionId).ToString());
-
-
         }
 
     }

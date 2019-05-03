@@ -7,7 +7,14 @@ namespace LooppieCore
     public enum Category
     {
         Food,
-        Relationship
+        Relationship,
+        IQTest,
+        Movie,
+        Technology,
+        WhatWouldYouDo,
+        Funny,
+        TrendingTopic,
+        Sports
     }
     public enum SubCategory
     {

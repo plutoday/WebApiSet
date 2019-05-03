@@ -20,11 +20,11 @@ namespace LooppieCore
             NewQuestions = new List<Question>();
             AnswerRecords = new List<QuestionAnswerRecord>();
             ExistingQuestions = new List<Question>();
-            ExistingQuestions.Add(new Question(id, "how are you?", new List<Answer>()
+            ExistingQuestions.Add(new Question(id.ToString(), "how are you?", new List<Answer>()
             {
                 new Answer("good"), new Answer("not good")
             }));
-            ExistingQuestions.Add(new Question(id, "what is your name?", new List<Answer>()
+            ExistingQuestions.Add(new Question(id.ToString(), "what is your name?", new List<Answer>()
             {
                 new Answer("dog"), new Answer("pig")
             }));
@@ -50,6 +50,11 @@ namespace LooppieCore
             return NewQuestions;
         }
 
+        public Question GetQuestion(Guid questionId)
+        {
+            return NewQuestions.FirstOrDefault(q => q.QuestionId == questionId);
+        }
+
         public User GetUserById(Guid id)
         {
             return Users[id];
@@ -61,6 +66,11 @@ namespace LooppieCore
             var records = AnswerRecords.Where(r => r.QuestionId == questionId).ToList();
             QuestionStat questionStat = new QuestionStat(question, records);
             return questionStat;
+        }
+
+        public List<QuestionAnswerRecord> GetQaRecords(string userName)
+        {
+            return AnswerRecords.Where(r => r.Answerer == userName).ToList();
         }
     }
 }

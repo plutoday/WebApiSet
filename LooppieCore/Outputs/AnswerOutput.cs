@@ -6,11 +6,14 @@ namespace LooppieCore
 {
     public class AnswerOutput
     {
-        public AnswerOutput(string description)
+        public AnswerOutput(string description, bool isCorrect = false)
         {
             Description = description;
+            IsCorrect = isCorrect;
         }
 
         public string Description { get; set; }
+
+        public bool IsCorrect { get; set; }
     }
 }

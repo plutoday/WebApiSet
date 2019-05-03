@@ -7,18 +7,18 @@ namespace LooppieCore
     public class QuestionAnswerRecord
     {
         public Guid ID { get; set; }
-        public Guid AnswererId { get; set; }
+        public string Answerer { get; set; }
         public Guid QuestionId { get; set; }
-        public int Answer { get; set; }
+        public string AnswerIndicesString { get; set; }
         public DateTime AnswerRecordCreateTime { get; set; }
 
         public bool Anonymous { get; set; }
 
-        public QuestionAnswerRecord(Guid answererId, Guid questionId, int answer)
+        public QuestionAnswerRecord(string answerer, Guid questionId, List<int> answerIndices)
         {
-            this.AnswererId = answererId;
+            this.Answerer = answerer;
             this.QuestionId = questionId;
-            this.Answer = answer;
+            this.AnswerIndicesString = string.Join('-', answerIndices);
             AnswerRecordCreateTime = DateTime.Now;
         }
 

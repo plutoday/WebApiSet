@@ -11,7 +11,8 @@ namespace LooppieCore
         void CreateQuestion(Question question);
         void CreateAnswerRecord(QuestionAnswerRecord record);
         List<Question> GetAllQuestions();
+        Question GetQuestion(Guid questionId);
         QuestionStat GetQuestionStat(Guid questionId);
-    
+        List<QuestionAnswerRecord> GetQaRecords(string userName);
     }
 }

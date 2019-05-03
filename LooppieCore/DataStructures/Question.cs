@@ -7,7 +7,7 @@ namespace LooppieCore
     public class Question : IComparable<Question>
     {
         public Guid QuestionId { get; set; }
-        public Guid SubmitterId { get; set; }
+        public string UserName { get; set; }
         public string Description { get; set; }
         public Category Category { get; set; }
         public SubCategory SubCategory { get; set; }
@@ -16,11 +16,9 @@ namespace LooppieCore
         public int HotRank { get; set; }
         public DateTime QuestionCreateTime { get; set; }
 
-
-
-        public Question(Guid submitterId, string description, List<Answer> answers)
+        public Question(string userName, string description, List<Answer> answers)
         {
-            SubmitterId = submitterId;
+            UserName = userName;
             Description = description;
             Answers = new List<Answer>(answers);
             QuestionId = Guid.NewGuid();
@@ -30,11 +28,9 @@ namespace LooppieCore
         }
 
         public Question()
-        {
- 
+        { 
             Answers = new List<Answer>();
             QuestionCreateTime = DateTime.Now;
-
         }
 
         public override string ToString()

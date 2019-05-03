@@ -11,17 +11,17 @@ namespace LooppieCore
         //public List<Tag> Tags { get; set; }
         public int HitCount { get; set; }
         public string Explanation { get; set; } 
+        public bool IsCorrect { get; set; }
 
-        public Answer(string description)
+        public Answer(string description, bool isCorrect = false)
         {
             Description = description;
             AnswerId = Guid.NewGuid();
+            IsCorrect = isCorrect;
         }
 
         public Answer()
         {
-
         }
-
     }
 }

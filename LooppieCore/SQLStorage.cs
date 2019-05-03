@@ -10,8 +10,6 @@ namespace LooppieCore
     {
         private LooppieContext _dbContext = new LooppieContext();
        
-
-
         public void CreateAnswerRecord(QuestionAnswerRecord record)
         {
             Domain.QuestionAnswerRecord domainQaRecord = record.ToDomainQaRecord();
@@ -41,6 +39,11 @@ namespace LooppieCore
             return list;
         }
 
+        public Question GetQuestion(Guid questionId)
+        {
+            return _dbContext.Question.First(q => q.QuestionId == questionId).ToQuestion();
+        }
+
         public QuestionStat GetQuestionStat(Guid questionId)
         {
             Question question = _dbContext.Question.First(q => q.QuestionId == questionId).ToQuestion();
@@ -54,5 +57,10 @@ namespace LooppieCore
             return _dbContext.User.Find(id).ToUser();
         }
 
+        public List<QuestionAnswerRecord> GetQaRecords(string userName)
+        {
+            var qaRecords = _dbContext.QuestionAnswerRecord.Where(r => r.Answerer == userName);
+            return qaRecords.Select(r => r.ToQaRecord()).ToList();
+        }
     }
 }

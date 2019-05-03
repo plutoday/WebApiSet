@@ -11,7 +11,7 @@ namespace LooppieCore
         {
            Domain.Question domainQuestion = new Domain.Question() {
                QuestionId = question.QuestionId,
-               SubmitterId = question.SubmitterId,
+               Submitter = question.UserName,
                Description = question.Description,
                Category = question.Category.ToString(),
                SubCategory = question.SubCategory.ToString(),
@@ -30,7 +30,8 @@ namespace LooppieCore
                 AnswerId = answer.AnswerId,
                 Description = answer.Description,
                 HitCount = answer.HitCount,
-                Explanation = answer.Explanation
+                Explanation = answer.Explanation,
+                IsCorrect = answer.IsCorrect
             };
             return domainAnswer;
         }
@@ -54,9 +55,9 @@ namespace LooppieCore
         {
             Domain.QuestionAnswerRecord domainQaRecord = new Domain.QuestionAnswerRecord() {
                 ID = record.ID,
-                AnswererId = record.AnswererId,
+                Answerer = record.Answerer,
                 QuestionId = record.QuestionId,
-                Answer = record.Answer,
+                Answer = int.Parse(record.AnswerIndicesString.Substring(0, 1)),
                 AnswerRecordCreateTime = record.AnswerRecordCreateTime,
                 Anonymous = record.Anonymous
             };
@@ -68,7 +69,7 @@ namespace LooppieCore
             Question question = new Question()
             {
                 QuestionId = domainQuestion.QuestionId,
-                SubmitterId = domainQuestion.SubmitterId,
+                UserName = domainQuestion.Submitter,
                 Description = domainQuestion.Description,
                 Category = (Category)Enum.Parse(typeof(Category), domainQuestion.Category),
                 SubCategory = (SubCategory)Enum.Parse(typeof(SubCategory), domainQuestion.SubCategory),
@@ -88,7 +89,8 @@ namespace LooppieCore
                 AnswerId = domainAnswer.AnswerId,
                 Description = domainAnswer.Description,
                 HitCount = domainAnswer.HitCount,
-                Explanation = domainAnswer.Explanation
+                Explanation = domainAnswer.Explanation,
+                IsCorrect = domainAnswer.IsCorrect
             };
             return answer;
         }
@@ -114,9 +116,9 @@ namespace LooppieCore
             QuestionAnswerRecord qaRecord = new QuestionAnswerRecord()
             {
                 ID = domainQaRecord.ID,
-                AnswererId = domainQaRecord.AnswererId,
+                Answerer = domainQaRecord.Answerer,
                 QuestionId = domainQaRecord.QuestionId,
-                Answer = domainQaRecord.Answer,
+                AnswerIndicesString = domainQaRecord.Answer.ToString(),
                 AnswerRecordCreateTime = domainQaRecord.AnswerRecordCreateTime,
                 Anonymous = domainQaRecord.Anonymous
             };
